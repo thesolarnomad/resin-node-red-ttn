@@ -1,11 +1,10 @@
 {
-  "name": "simple-server-node",
+  "name": "resin-node-red-ttn",
   "version": "1.0.0",
-  "description": "A simple Expressjs Web server on resin.io",
-  "main": "server.js",
+  "description": "A TTN-enabled node-red instance on resin.io",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node-red-pi -v --max-old-space-size=128 --userDir /data/node-red --port 80"
   },
   "repository": {
     "type": "git",
@@ -13,17 +12,14 @@
   },
   "keywords": [
     "resin.io",
-    "webserver",
-    "nodejs",
-    "expressjs"
+    "node-red",
+    "ttn",
+    "the things network"
   ],
-  "author": "Shaun Mulligan <shaun@resin.io>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/resin-io-projects/simple-server-node/issues"
-  },
-  "homepage": "https://github.com/resin-io-projects/simple-server-node#readme",
+  "author": "Joscha Feth <joscha@feth.com>",
+  "license": "MIT",
   "dependencies": {
-    "express": "*"
+    "node-red": "^0.14.4",
+    "node-red-contrib-ttn": "^0.1.0"
   }
 }

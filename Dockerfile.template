@@ -1,7 +1,5 @@
-# base-image for node on any machine using a template variable,
-# see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
-# Note the node:slim image doesn't have node-gyp
-FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
+# see more about dockerfile templates here: http://docs.resin.io/runtime/resin-base-images/
+FROM resin/%%RESIN_MACHINE_NAME%%-node:6.2.2-wheezy
 
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
