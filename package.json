@@ -4,7 +4,7 @@
   "description": "A TTN-enabled node-red instance on resin.io",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node-red-pi -v --max-old-space-size=128 --userDir /data/node-red --port 80"
+    "start": "mkdir -p /data/node-red && node-red-pi --max-old-space-size=128 -u /data/node-red -p 80 -v"
   },
   "repository": {
     "type": "git",
