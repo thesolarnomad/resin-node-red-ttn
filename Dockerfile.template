@@ -1,27 +1,5 @@
 # see more about dockerfile templates here: http://docs.resin.io/runtime/resin-base-images/
-FROM resin/%%RESIN_MACHINE_NAME%%-node:6.2.2-wheezy
-
-RUN apt-get install software-properties-common
-RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y
-RUN apt-get update && apt-get install -yq \
-    gcc-5 \
-    g++-5 && \
-    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 80 --slave /usr/bin/g++ g++ /usr/bin/g++-5 && \
-    update-alternatives --set gcc /usr/bin/gcc-5 && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Defines our working directory in container
-WORKDIR /usr/src/app
-
-# Copies the package.json first for better cache on later pushes
-COPY package.json package.json
-
-# This install npm dependencies on the resin.io build server,
-# making sure to clean up the artifacts it creates in order to reduce the image size.
-RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
-
-# This will copy all files in our root to the working  directory in the container
-COPY . ./
+FROM resin/%%RESIN_MACHINE_NAME%%-node:4.3-onbuild
 
 # Enable systemd init system in container
 ENV INITSYSTEM=on
